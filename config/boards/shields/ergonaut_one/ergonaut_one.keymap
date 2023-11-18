@@ -19,33 +19,43 @@
             then-layer = <3>;
         };
     };
-
+    behaviors {
+        bhm: balanced_homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;    // <---[[moderate duration]]
+            quick-tap-ms = <0>;
+            flavor = "balanced";
+            bindings = <&kp>, <&kp>;
+        };
+    };
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             bindings = <
-                &mt LGUI RBKT     &kp Q   &kp W   &kp E         &kp R             &kp T         &kp Y         &kp U            &kp I         &kp O     &kp P      &kp LBKT       
-                &mt LCTRL GRAVE   &kp A   &kp S   &kp D         &kp F             &kp G         &kp H         &kp J            &kp K         &kp L     &kp SEMI   &mt RCTRL SQT
-                &mt LALT MINUS    &kp Z   &kp X   &kp C         &kp V             &kp B         &kp N         &kp M            &kp COMMA     &kp DOT   &kp FSLH   &mt RALT BSLH
-                                                  &lt RSE TAB   &mt LSHFT SPACE   &lt LWR RET   &lt LWR ESC   &mt RSHFT BSPC   &lt RSE DEL
+                &kp LA(N1)         &kp Q          &kp W         &kp E         &kp R              &kp T         &kp Y         &kp U            &kp I            &kp O           &kp P               &kp LA(N2)
+                &kp ESC           &kp A          &bhm LCTRL S  &bhm LALT D   &bhm LGUI F        &kp G         &kp H         &bhm RGUI J      &bhm RALT  K     &bhm RCTRL L    &kp SEMI            &kp SQT
+                &bhm LSHIFT GRAVE  &bhm LSHIFT Z  &kp X         &kp C         &kp V              &kp B         &kp N         &kp M            &kp COMMA        &kp DOT         &bhm RSHIFT FSLH    &bhm RSHFT BSLH
+                                                                &lt RSE BSPC  &lt ADJ SPACE      &lt LWR TAB   &lt LWR RET   &lt ADJ SPACE    &lt RSE DEL
             >;
         };
         lower_layer {
             bindings = <
-                &mt LGUI F1      &kp F2     &kp F3   &kp F4        &kp F5     &kp F6      &kp F7      &kp F8     &kp F9        &kp F10    &kp F11    &kp F12           
-                &mt LCTRL PLUS   &kp EXCL   &kp AT   &kp HASH      &kp DLLR   &kp PRCNT   &kp CARET   &kp AMPS   &kp STAR      &kp LPAR   &kp RPAR   &mt RCTRL MINUS
-                &mt LALT EQUAL   &kp N1     &kp N2   &kp N3        &kp N4     &kp N5      &kp N6      &kp N7     &kp N8        &kp N9     &kp N0     &kp RALT
-                                                     &trans        &trans     &trans      &trans      &trans     &trans
+                &kp  F1           &kp F2           &kp F3           &kp F4        &kp F5        &kp F6                    &kp F7      &kp F8     &kp F9        &kp F10      &kp F11             &kp F12
+                &kp PLUS          &trans           &trans           &trans        &trans        &trans                    &kp LEFT    &kp DOWN   &kp UP        &kp RIGHT    &kp COLON           &bhm RCTRL K_APP
+                &bhm LSHIFT EQUAL &bhm LSHIFT EXCL &kp AT           &kp HASH      &kp DLLR      &kp PRCNT                 &kp CARET   &kp AMPS   &kp RS(N8)    &kp UNDER    &bhm LSHIFT EQUAL   &bhm RSHFT BSLH
+                                                                    &lt ADJ BSPC  &trans        &trans                    &trans    &trans   &lt ADJ DEL
             >;
         };
 
         raise_layer {
             bindings = <
-                &mt LGUI KP_NUM   &kp KP_SLASH      &kp KP_N7   &kp KP_N8   &kp KP_N9   &kp KP_MINUS   &kp C_VOL_UP   &kp HOME   &kp PSCRN   &kp PG_UP   &kp SLCK          &kp CLCK   
-                &mt LCTRL EQUAL   &kp KP_MULTIPLY   &kp KP_N4   &kp KP_N5   &kp KP_N6   &kp KP_PLUS    &kp C_MUTE     &kp LEFT   &kp UP      &kp RIGHT   &kp INS           &mt RCTRL  K_APP
-                &kp LALT          &kp KP_N0         &kp KP_N1   &kp KP_N2   &kp KP_N3   &kp KP_DOT     &kp C_VOL_DN   &kp END    &kp DOWN    &kp PG_DN   &kp PAUSE_BREAK   &kp RALT
-                                                                &trans      &trans      &trans         &trans         &trans     &trans
+            &kp FSLH       &kp MINUS   &kp N7   &kp N8       &kp N9       &kp LBKT                &kp RBKT     &trans          &trans             &trans       &trans    &trans 
+            &kp RS(N8)     &kp PLUS    &kp N4   &kp N5       &kp N6       &kp LPAR                &kp RPAR     &kp LG(LS(N4))  &kp LG(LC(LS(N4))) &trans       &trans    &trans
+            &kp RA(DOT)    &kp N0      &kp N1   &kp N2       &kp N3       &kp LS(LBKT)            &kp RS(RBKT) &trans          &kp RA(COMMA)      &kp RA(DOT)  &trans    &trans
+                                                &trans       &trans       &lt ADJ RET             &lt ADJ ESC  &trans          &trans
             >;
         };
         adjust_layer {
