@@ -46,7 +46,7 @@
                 &kp  F1           &kp F2           &kp F3           &kp F4        &kp F5        &kp F6                    &kp F7      &kp F8     &kp F9        &kp F10      &kp F11             &kp F12
                 &kp PLUS          &trans           &trans           &trans        &trans        &trans                    &kp LEFT    &kp DOWN   &kp UP        &kp RIGHT    &kp COLON           &bhm RCTRL K_APP
                 &bhm LSHIFT EQUAL &bhm LSHIFT EXCL &kp AT           &kp HASH      &kp DLLR      &kp PRCNT                 &kp CARET   &kp AMPS   &kp RS(N8)    &kp UNDER    &bhm LSHIFT EQUAL   &bhm RSHFT BSLH
-                                                                    &lt ADJ BSPC  &trans        &trans                    &trans    &trans   &lt ADJ DEL
+                                                                    &trans        &trans        &trans                    &trans    &trans   &trans
             >;
         };
 
